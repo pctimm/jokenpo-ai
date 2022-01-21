@@ -19,13 +19,16 @@ while (true) { // Looping the match
     showScore(aiVictories, playerVictories)
     const uChoice = prompt("your choice >>> ")
     console.log('')
+
+    // Validating user input
     if (uChoice !== 'sci' && uChoice !== 'pap' && uChoice !== 'roc') {
         if (uChoice == "help") showInstructions()
         else console.log("[!] Invalid choice. Try again or [help].")
         continue
     }
+
     const aiChoice = ai.chooseOption(lastRound)
-    console.log(uChoice + " |you   VS.   ai| " + aiChoice)
+    console.log(choiceToEmoji(uChoice) + " | you   VS.   ai| " + choiceToEmoji(aiChoice))
     const winner = calculateWinner(uChoice, aiChoice)
     lastRound = setLastRound(winner, uChoice, aiChoice)
     console.log(lastRound)
@@ -77,4 +80,12 @@ function calculateWinner(playerC, aiC) {
     else if (playerC == 'sci' && aiC == 'roc') return 'ai'
     else if (playerC == 'pap' && aiC == 'sci') return 'ai'
     else return 'draw'
+}
+function choiceToEmoji(choice) {
+    const rock = "🪨"
+    const scissors = "✂️"
+    const paper = "📜"
+    if (choice == 'roc') return rock
+    else if (choice == 'sci') return scissors
+    else return paper
 }

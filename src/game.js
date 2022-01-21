@@ -16,8 +16,9 @@ showInstructions()
 console.log("And... the match begins!!!\n")
 
 while (true) { // Looping the match
-
+    showScore(aiVictories, playerVictories)
     const uChoice = prompt("your choice >>> ")
+    console.log('')
     if (uChoice !== 'sci' && uChoice !== 'pap' && uChoice !== 'roc') {
         if (uChoice == "help") showInstructions()
         else console.log("[!] Invalid choice. Try again or [help].")
@@ -60,6 +61,11 @@ function showInstructions() {
     "Write [pap] for Paper;\n" +
     "Write [roc] for Rock;\n" +
     "Type [help] for showing this instructions again.\n\n")
+}
+function showScore(aiWins, pWins) {
+    console.log("GERSON: " + aiWins)
+    console.log("YOU: " + pWins)
+    console.log("-=-=-=--=-=-=-=-=--")
 }
 function calculateWinner(playerC, aiC) {
     // player wins

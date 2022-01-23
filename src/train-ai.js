@@ -17,7 +17,7 @@ import * as game from '../src/game.js'
 const net = new brain.brain.NeuralNetwork()
 
 // database
-const data = [
+let data = [
 
 ]
 
@@ -26,7 +26,6 @@ export function getBrainData() {
 }
 
 export function pushBrainData(lastRound, userOutput) {
-    const statusLR = game.getStatusCode(lastRound.status)
     
     const lastRoundObj = {
         "status": game.getStatusCode(lastRound.status),
@@ -35,9 +34,11 @@ export function pushBrainData(lastRound, userOutput) {
     }
 
     const obj = {
-        input: lastRoundObj,
-        output: userOutput
+        'input': lastRoundObj,
+        'output': [bot.gameChoiceToCode(userOutput)]
     }
     data.push(obj)
     net.train(data)
 }
+
+game.runGame(true)

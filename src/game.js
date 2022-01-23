@@ -26,13 +26,16 @@ while (true) { // Looping the match
     showScore(aiVictories, playerVictories)
     const uChoice = prompt("your choice >>> ")
     console.log('')
-
+    
     // Validating user input
     if (uChoice !== 'sci' && uChoice !== 'pap' && uChoice !== 'roc') {
         if (uChoice == "help") showInstructions()
         else console.log("[!] Invalid choice. Try again or [help].")
         continue
     }
+
+    // Before actual playing - every turn, register user input :)
+    trainai.pushBrainData(lastRound, uChoice)
 
     const aiChoice = ai.chooseOption(lastRound)
     console.log(choiceToEmoji(uChoice) + " | you   VS.   ai| " + choiceToEmoji(aiChoice))

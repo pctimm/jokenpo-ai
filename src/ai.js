@@ -22,7 +22,7 @@ export function chooseOption(lastRound) {
     }
 }
 
-function codeToGameChoice(number) {
+export function codeToGameChoice(number) {
     if (number == 1) {
         return 'sci'
     }
@@ -35,7 +35,7 @@ function codeToGameChoice(number) {
     return 'sci' // ?
 }
 
-function gameChoiceToCode(choice) {
+export function gameChoiceToCode(choice) {
     if (choice == 'sci') return 1
     else if (choice == 'pap') return 2
     else if (choice == 'roc') return 3

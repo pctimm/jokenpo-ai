@@ -10,3 +10,34 @@
     tipodejogada: 1: sci, 2: pap, 3: roc
     saída em tipo de jogada.
 */
+import * as brain from '../node_modules/brain.js/dist/brain.js'
+import * as bot from '../src/ai.js'
+import * as game from '../src/game.js'
+
+const net = new brain.brain.NeuralNetwork()
+
+// database
+const data = [
+
+]
+
+export function getBrainData() {
+    return data
+}
+
+export function pushBrainData(lastRound, userOutput) {
+    const statusLR = game.getStatusCode(lastRound.status)
+    
+    const lastRoundObj = {
+        "status": game.getStatusCode(lastRound.status),
+        "ai": bot.gameChoiceToCode(lastRound.ai),
+        "player": bot.gameChoiceToCode(lastRound.player)
+    }
+
+    const obj = {
+        input: lastRoundObj,
+        output: userOutput
+    }
+    data.push(obj)
+    net.train(data)
+}

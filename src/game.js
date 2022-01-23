@@ -1,9 +1,14 @@
+import * as trainai from '../src/train-ai.js'
+import PromptSync from "prompt-sync";
+import * as ai from "./ai.js"
+
 let playerVictories = 0
 let aiVictories = 0
 
+export function runGame(train) {
 // Reading input configuration
-import PromptSync from "prompt-sync";
-import * as ai from "./ai.js"
+
+
 const prompt = PromptSync();
 let lastRound = {
     status: null,
@@ -12,6 +17,8 @@ let lastRound = {
 }
 showTitle()
 showInstructions()
+
+if (train) console.log("THIS IS RUNNING IN TRAIN AI MODE. Machine Learning RUNNING!")
 
 console.log("And... the match begins!!!\n")
 
@@ -44,6 +51,8 @@ while (true) { // Looping the match
         console.log("It was a draw. hmmm...")
     }
 }
+}
+
 
 function setLastRound(s, p, a) {
     const newLastRound = {
@@ -89,9 +98,10 @@ function choiceToEmoji(choice) {
     else if (choice == 'sci') return scissors
     else return paper
 }
-function getStatusCode(statusName) {
+
+export function getStatusCode(statusName) {
     if (statusName == 'draw') return 0
     else if (statusName == 'ai') return 1
     else if (statusName == 'player') return 2
-    return undefined
+    return 0
 }

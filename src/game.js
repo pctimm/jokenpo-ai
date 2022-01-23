@@ -89,3 +89,9 @@ function choiceToEmoji(choice) {
     else if (choice == 'sci') return scissors
     else return paper
 }
+function getStatusCode(statusName) {
+    if (statusName == 'draw') return 0
+    else if (statusName == 'ai') return 1
+    else if (statusName == 'player') return 2
+    return undefined
+}

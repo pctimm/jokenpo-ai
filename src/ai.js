@@ -34,3 +34,10 @@ function codeToGameChoice(number) {
     }
     return 'sci' // ?
 }
+
+function gameChoiceToCode(choice) {
+    if (choice == 'sci') return 1
+    else if (choice == 'pap') return 2
+    else if (choice == 'roc') return 3
+    else return 1 // ?
+}

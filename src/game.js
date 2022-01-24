@@ -5,9 +5,9 @@ import * as ai from "./ai.js"
 let playerVictories = 0
 let aiVictories = 0
 
-export function runGame(train) {
+export function runGame(train, data) {
 // Reading input configuration
-
+let aiData = data
 
 const prompt = PromptSync();
 let lastRound = {
@@ -26,7 +26,7 @@ while (true) { // Looping the match
     showScore(aiVictories, playerVictories)
     const uChoice = prompt("your choice >>> ")
     console.log('')
-    
+
     // Validating user input
     if (uChoice !== 'sci' && uChoice !== 'pap' && uChoice !== 'roc') {
         if (uChoice == "help") showInstructions()
@@ -35,8 +35,8 @@ while (true) { // Looping the match
     }
 
     // Before actual playing - every turn, register user input :)
-    trainai.pushBrainData(lastRound, uChoice)
-
+    trainai.pushBrainData(lastRound, uChoice, aiData)
+    console.log(aiData)
     const aiChoice = ai.chooseOption(lastRound)
     console.log(choiceToEmoji(uChoice) + " | you   VS.   ai| " + choiceToEmoji(aiChoice))
     const winner = calculateWinner(uChoice, aiChoice)

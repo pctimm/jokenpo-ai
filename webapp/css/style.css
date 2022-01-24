@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    width: 100%;
+    /* font-family: 'Montserrat', sans-serif; --- HEADER font --- */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+/* Reset text margins */
+h1, h2, h3, p {
+    margin: 0; 
+}
+
+.container {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    border-bottom: rgb(89, 190, 59) solid 3px;
+    width: 100%;
+    height: 100px;
+}
+
+.header-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.weak-text {
+    color: grey;
+}
+
+.vertical-bar {
+    font-size: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.header-title-secondary {
+    font-weight: lighter;
+}
+
+.play-content {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background-color: greenyellow;
+}

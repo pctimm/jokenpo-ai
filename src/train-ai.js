@@ -25,7 +25,7 @@ export function getBrainData() {
     return data
 }
 
-export function pushBrainData(lastRound, userOutput) {
+export function pushBrainData(lastRound, userOutput, data) {
     
     const lastRoundObj = {
         "status": game.getStatusCode(lastRound.status),
@@ -37,8 +37,8 @@ export function pushBrainData(lastRound, userOutput) {
         'input': lastRoundObj,
         'output': [bot.gameChoiceToCode(userOutput)]
     }
-    data.push(obj)
+    data = [...data, obj]
     net.train(data)
 }
 
-game.runGame(true)
+game.runGame(true, data)
